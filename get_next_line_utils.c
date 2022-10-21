@@ -6,7 +6,7 @@
 /*   By: ulayus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:34:14 by ulayus            #+#    #+#             */
-/*   Updated: 2022/10/18 14:26:53 by ulayus           ###   ########.fr       */
+/*   Updated: 2022/10/18 17:05:41 by ulayus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ int	ft_strlen(char *s)
 		i++;
 	return (i);
 }
+
+/*****************************
+ *--- Secure malloc initᵒ ---*
+ ****************************/
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
@@ -46,6 +50,29 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	}
 	return (array);
 }
+
+/*****************************
+ *-- Copy buf with nl stop --*
+ ****************************/
+
+void	cpy_buf_nl(char *buf, char *str, int i)
+{
+	int	j;
+
+	j = 0;
+	while (buf[j])
+	{
+		str[i] = buf[j];
+		if (buf[j] == '\n')
+			return ;
+		i++;
+		j++;
+	}
+}
+
+/*****************************
+ *-- Alloc prev line + buf --*
+ ****************************/
 
 char	*ft_strjoin(char *line, char *buf)
 {
@@ -72,20 +99,9 @@ char	*ft_strjoin(char *line, char *buf)
 	return (str);
 }
 
-void	cpy_buf_nl(char *buf, char *str, int i)
-{
-	int	j;
-
-	j = 0;
-	while (buf[j])
-	{
-		str[i] = buf[j];
-		if (buf[j] == '\n')
-			return ;
-		i++;
-		j++;
-	}
-}
+/*****************************
+ *-- Save the buf after nl --*
+ ****************************/
 
 void	ft_substr(char *buf)
 {

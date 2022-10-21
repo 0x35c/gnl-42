@@ -6,11 +6,15 @@
 /*   By: ulayus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:34:02 by ulayus            #+#    #+#             */
-/*   Updated: 2022/10/18 14:24:31 by ulayus           ###   ########.fr       */
+/*   Updated: 2022/10/18 16:53:48 by ulayus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+/*****************************
+ *- Rd + check buf function -*
+ ****************************/
 
 int	read_fd(int fd, char *buf)
 {
@@ -25,6 +29,10 @@ int	read_fd(int fd, char *buf)
 	else
 		return (0);
 }
+
+/*****************************
+ *- Find '\n' char function -*
+ ****************************/
 
 int	find_nl(char *str)
 {
@@ -42,6 +50,10 @@ int	find_nl(char *str)
 	}
 	return (0);
 }
+
+/*****************************
+ *---- Main gnl function ----*
+ ****************************/
 
 char	*get_next_line(int fd)
 {
@@ -69,24 +81,3 @@ char	*get_next_line(int fd)
 	ft_substr(buf);
 	return (line);
 }
-/*
-int main(void)
-{
-    int i;
-    int fd;
-	char	*str;
-
-    fd = open("test3", 0);
-    i = 0;
-    while (i < 10)
-    {
-        //printf("Call %d:\n", i + 1);
-		str = get_next_line(fd);
-        printf("%s", str);
-		free(str);
-        //printf("---------\n");
-        i++;
-    }
-    close(fd);
-    return (0);
-}*/
