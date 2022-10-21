@@ -6,7 +6,7 @@
 /*   By: ulayus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:34:14 by ulayus            #+#    #+#             */
-/*   Updated: 2022/10/18 11:31:45 by ulayus           ###   ########.fr       */
+/*   Updated: 2022/10/18 14:26:53 by ulayus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,27 +24,27 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
-void    *ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-    char    *array;
+	char	*array;
 	int		i;
 	int		n;
 
 	n = nmemb * size;
-    if (n / nmemb != size)
-        return (NULL);
-    array = malloc(n);
-    if (!array)
+	if (n / nmemb != size)
+		return (NULL);
+	array = malloc(n);
+	if (!array)
 	{
-        return (NULL);
+		return (NULL);
 	}
 	i = 0;
 	while (i < n)
-    {
-        array[i] = '\0';
+	{
+		array[i] = '\0';
 		i++;
-    }
-    return (array);
+	}
+	return (array);
 }
 
 char	*ft_strjoin(char *line, char *buf)
@@ -62,27 +62,29 @@ char	*ft_strjoin(char *line, char *buf)
 	{
 		while (line[j])
 		{
-			if (line[j] == '\n')
-			{
-				free(line);
-				return (str);
-			}
 			str[i] = line[j];
 			i++;
 			j++;
 		}
 		free(line);
 	}
+	cpy_buf_nl(buf, str, i);
+	return (str);
+}
+
+void	cpy_buf_nl(char *buf, char *str, int i)
+{
+	int	j;
+
 	j = 0;
 	while (buf[j])
 	{
 		str[i] = buf[j];
 		if (buf[j] == '\n')
-			return (str);
+			return ;
 		i++;
 		j++;
 	}
-	return (str);
 }
 
 void	ft_substr(char *buf)
