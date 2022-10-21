@@ -6,7 +6,7 @@
 /*   By: ulayus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:34:02 by ulayus            #+#    #+#             */
-/*   Updated: 2022/10/15 16:50:09 by ulayus           ###   ########.fr       */
+/*   Updated: 2022/10/18 11:30:16 by ulayus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ int	read_fd(int fd, char *buf)
 {
 	int	check_read;
 
-	if (fd < 0)
-		return (-1);
 	check_read = read(fd, buf, BUFFER_SIZE);
 	if (check_read > 0)
 	{
@@ -28,7 +26,7 @@ int	read_fd(int fd, char *buf)
 		return (0);
 }
 
-int	read_static(char *str)
+int	find_nl(char *str)
 {
 	int	i;
 
@@ -49,18 +47,25 @@ char	*get_next_line(int fd)
 {
 	static char	buf[BUFFER_SIZE + 1];
 	char		*line;
-	int			check_read;
+	static int	check_read;
 
 	line = NULL;
-	check_read = 1;
-	while (!read_static(buf) && check_read)
+	while (!find_nl(buf))
 	{
+		if (buf[0] && !check_read)
+			return (NULL);
 		line = ft_strjoin(line, buf);
 		check_read = read_fd(fd, buf);
 		if (!check_read)
 			break ;
 	}
-	line = ft_strjoin(line, buf);
+	if (find_nl(buf))
+		line = ft_strjoin(line, buf);
+	if (line && !line[0])
+	{
+		free(line);
+		return (NULL);
+	}
 	ft_substr(buf);
 	return (line);
 }
@@ -71,7 +76,7 @@ int main(void)
     int fd;
 	char	*str;
 
-    fd = open("test2", 0);
+    fd = open("test3", 0);
     i = 0;
     while (i < 10)
     {
