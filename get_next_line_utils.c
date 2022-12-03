@@ -6,7 +6,7 @@
 /*   By: ulayus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:34:14 by ulayus            #+#    #+#             */
-/*   Updated: 2022/10/18 17:05:41 by ulayus           ###   ########.fr       */
+/*   Updated: 2022/12/03 16:21:40 by ulayus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	cpy_buf_nl(char *buf, char *str, int i)
  *-- Alloc prev line + buf --*
  ****************************/
 
-char	*ft_strjoin(char *line, char *buf)
+char	*ft_strjoin_gnl(char *line, char *buf)
 {
 	char	*str;
 	int		i;
@@ -103,7 +103,7 @@ char	*ft_strjoin(char *line, char *buf)
  *-- Save the buf after nl --*
  ****************************/
 
-void	ft_substr(char *buf)
+void	ft_substr_gnl(char *buf)
 {
 	int	i;
 	int	j;

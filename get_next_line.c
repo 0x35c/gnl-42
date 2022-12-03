@@ -6,7 +6,7 @@
 /*   By: ulayus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 22:34:02 by ulayus            #+#    #+#             */
-/*   Updated: 2022/10/20 13:24:29 by ulayus           ###   ########.fr       */
+/*   Updated: 2022/12/03 16:21:46 by ulayus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,18 +66,18 @@ char	*get_next_line(int fd)
 	{
 		if (buf[0] && !check_read)
 			buf[0] = '\0';
-		line = ft_strjoin(line, buf);
+		line = ft_strjoin_gnl(line, buf);
 		check_read = read_fd(fd, buf);
 		if (!check_read)
 			break ;
 	}
 	if (find_nl(buf))
-		line = ft_strjoin(line, buf);
+		line = ft_strjoin_gnl(line, buf);
 	if (line && !line[0])
 	{
 		free(line);
 		return (NULL);
 	}
-	ft_substr(buf);
+	ft_substr_gnl(buf);
 	return (line);
 }

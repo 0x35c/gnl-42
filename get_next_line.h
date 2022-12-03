@@ -6,7 +6,7 @@
 /*   By: ulayus <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 10:53:20 by ulayus            #+#    #+#             */
-/*   Updated: 2022/10/18 16:57:27 by ulayus           ###   ########.fr       */
+/*   Updated: 2022/12/03 16:21:58 by ulayus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
  ****************************/
 
 char	*get_next_line(int fd);
-char	*ft_strjoin(char *line, char *buf);
-void	ft_substr(char *buf);
+char	*ft_strjoin_gnl(char *line, char *buf);
+void	ft_substr_gnl(char *buf);
 
 #endif
